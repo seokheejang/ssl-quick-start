@@ -106,7 +106,8 @@ function App() {
     // Get user's Ethereum public address
     const address = await web3.eth.getAccounts();
     const chainId = await web3.eth.getChainId();
-    uiConsole("address", address, "chainId", Number(chainId));
+    const pk = await provider.request({ method: "eth_private_key" });
+    uiConsole("address", address, "chainId", Number(chainId), "pk", pk);
   };
 
   const getBalance = async () => {
